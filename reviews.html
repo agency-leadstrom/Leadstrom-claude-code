@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leadstrom — Client Results</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://fast.wistia.com/player.js" async></script>
+    <script src="https://fast.wistia.com/embed/n8ocf90sfl.js" async type="module"></script>
+    <script src="https://fast.wistia.com/embed/k2aacteb5v.js" async type="module"></script>
+    <script src="https://fast.wistia.com/embed/w9c7018d17.js" async type="module"></script>
+    <style>
+        /* ── Reset & Base ── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: #060910;
+            color: #ffffff;
+            font-family: 'DM Sans', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ── Background grid ── */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(0deg, rgba(82,172,228,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(82,172,228,0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ══════════════════════════════
+           NAV
+        ══════════════════════════════ */
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            width: 100%;
+            background: rgba(6, 9, 16, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(82,172,228,0.15);
+        }
+
+        .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+            gap: 1rem;
+        }
+
+        .nav-logo {
+            font-family: 'Clash Display', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff 0%, #52ace4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            list-style: none;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .nav-links a {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            padding: 0.5rem 0.875rem;
+            border-radius: 8px;
+            transition: all 0.25s ease;
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+            background: rgba(82,172,228,0.12);
+        }
+
+        .nav-links a.nav-cta {
+            background: linear-gradient(135deg, #52ace4 0%, #3a73c1 100%);
+            color: #ffffff;
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            box-shadow: 0 4px 16px rgba(82,172,228,0.35);
+            transition: all 0.25s ease;
+        }
+
+        .nav-links a.nav-cta:hover {
+            background: linear-gradient(135deg, #6dbef0 0%, #4a83d1 100%);
+            box-shadow: 0 6px 24px rgba(82,172,228,0.5);
+            transform: translateY(-1px);
+        }
+
+        /* ══════════════════════════════
+           HERO
+        ══════════════════════════════ */
+        .hero {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 5rem 1.5rem 4rem;
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(0,255,127,0.1);
+            border: 1px solid rgba(0,255,127,0.3);
+            border-radius: 50px;
+            padding: 0.5rem 1.25rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #00ff7f;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 2rem;
+        }
+
+        .hero-eyebrow-dot {
+            width: 8px;
+            height: 8px;
+            background: #00ff7f;
+            border-radius: 50%;
+            box-shadow: 0 0 12px rgba(0,255,127,0.8);
+            animation: heroDotPulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heroDotPulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(1.3); }
+        }
+
+        .hero-title {
+            font-family: 'Clash Display', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title-white { color: #ffffff; }
+
+        .hero-title-gradient {
+            background: linear-gradient(135deg, #52ace4 0%, #00ff7f 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-sub {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.6);
+            max-width: 520px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* ══════════════════════════════
+           SECTION LABELS
+        ══════════════════════════════ */
+        .section-label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-label-line {
+            height: 2px;
+            width: 50px;
+            background: rgba(255,255,255,0.2);
+        }
+
+        .section-label-text {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: rgba(255,255,255,0.4);
+        }
+
+        /* ══════════════════════════════
+           VIDEO TESTIMONIALS
+        ══════════════════════════════ */
+        .video-section {
+            position: relative;
+            z-index: 1;
+            padding: 2rem 1.5rem 5rem;
+        }
+
+        .video-section-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .video-section-title {
+            font-family: 'Clash Display', sans-serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            text-align: center;
+            background: linear-gradient(135deg, #ffffff 0%, #52ace4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        /* Testimonial card */
+        .testimonial-card {
+            background: linear-gradient(160deg, rgba(15,20,35,0.95) 0%, rgba(10,14,26,0.98) 100%);
+            border: 1px solid rgba(82,172,228,0.2);
+            border-radius: 28px;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+
+        .testimonial-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .testimonial-card:nth-child(1) { transition-delay: 0.05s; }
+        .testimonial-card:nth-child(2) { transition-delay: 0.15s; }
+        .testimonial-card:nth-child(3) { transition-delay: 0.25s; }
+
+        .testimonial-card:hover {
+            border-color: rgba(82,172,228,0.45);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(82,172,228,0.1);
+            transform: translateY(-6px);
+        }
+
+        .testimonial-card.visible:hover {
+            transform: translateY(-6px);
+        }
+
+        /* Stats bar */
+        .card-stats {
+            padding: 1.75rem 1.75rem 1.25rem;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .stat-number {
+            font-family: 'Clash Display', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #00ff7f 0%, #00e5ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 0.25rem;
+            filter: drop-shadow(0 0 20px rgba(0,255,127,0.3));
+        }
+
+        .stat-label-main {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 0.125rem;
+        }
+
+        .stat-timeframe {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #52ace4;
+        }
+
+        /* Video embed area */
+        .card-video {
+            padding: 1.25rem 1.75rem;
+        }
+
+        .video-wrapper {
+            border-radius: 16px;
+            overflow: hidden;
+            background: #000;
+        }
+
+        wistia-player[media-id='n8ocf90sfl']:not(:defined) {
+            background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/n8ocf90sfl/swatch');
+            display: block;
+            filter: blur(5px);
+            padding-top: 177.78%;
+        }
+
+        wistia-player[media-id='k2aacteb5v']:not(:defined) {
+            background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/k2aacteb5v/swatch');
+            display: block;
+            filter: blur(5px);
+            padding-top: 177.78%;
+        }
+
+        wistia-player[media-id='w9c7018d17']:not(:defined) {
+            background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/w9c7018d17/swatch');
+            display: block;
+            filter: blur(5px);
+            padding-top: 56.25%;
+        }
+
+        /* Card footer */
+        .card-footer {
+            padding: 1rem 1.75rem 1.75rem;
+        }
+
+        .card-client-name {
+            font-family: 'Clash Display', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.35rem;
+        }
+
+        .card-client-desc {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.5);
+            line-height: 1.5;
+        }
+
+        .card-cost-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(0,255,127,0.1);
+            border: 1px solid rgba(0,255,127,0.25);
+            border-radius: 50px;
+            padding: 0.35rem 0.875rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #00ff7f;
+            margin-top: 0.75rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* ══════════════════════════════
+           STATS TICKER
+        ══════════════════════════════ */
+        .stats-ticker {
+            position: relative;
+            z-index: 1;
+            background: rgba(82,172,228,0.06);
+            border-top: 1px solid rgba(82,172,228,0.12);
+            border-bottom: 1px solid rgba(82,172,228,0.12);
+            padding: 2.5rem 1.5rem;
+            margin-bottom: 0;
+        }
+
+        .stats-ticker-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .ticker-stat-num {
+            font-family: 'Clash Display', sans-serif;
+            font-size: 2.25rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #52ace4 0%, #00ff7f 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.35rem;
+        }
+
+        .ticker-stat-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.45);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ══════════════════════════════
+           SCREENSHOT TESTIMONIALS
+        ══════════════════════════════ */
+        .screenshots-section {
+            position: relative;
+            z-index: 1;
+            padding: 5rem 1.5rem;
+        }
+
+        .screenshots-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .screenshots-title {
+            font-family: 'Clash Display', sans-serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            text-align: center;
+            background: linear-gradient(135deg, #ffffff 0%, #52ace4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        /* Ad Results subsection */
+        .subsection-label {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #52ace4;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .ad-results-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .screenshot-frame {
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(82,172,228,0.2);
+            background: rgba(15,20,35,0.8);
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .screenshot-frame.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .screenshot-frame:hover {
+            border-color: rgba(82,172,228,0.45);
+            box-shadow: 0 16px 50px rgba(0,0,0,0.5);
+            transform: translateY(-4px) scale(1.01);
+        }
+
+        .screenshot-frame.visible:hover {
+            transform: translateY(-4px) scale(1.01);
+        }
+
+        .screenshot-frame img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .screenshot-caption {
+            padding: 1rem 1.25rem;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .screenshot-caption-title {
+            font-family: 'Clash Display', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.25rem;
+        }
+
+        .screenshot-caption-sub {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.45);
+        }
+
+        /* Chat screenshots */
+        .chat-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .chat-card {
+            background: rgba(15,20,35,0.8);
+            border: 1px solid rgba(0,255,127,0.15);
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .chat-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .chat-card:hover {
+            border-color: rgba(0,255,127,0.4);
+            box-shadow: 0 16px 50px rgba(0,0,0,0.5), 0 0 30px rgba(0,255,127,0.08);
+            transform: translateY(-4px);
+        }
+
+        .chat-card.visible:hover {
+            transform: translateY(-4px);
+        }
+
+        .chat-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .chat-card-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.875rem 1.25rem;
+            border-top: 1px solid rgba(0,255,127,0.1);
+        }
+
+        .chat-badge-dot {
+            width: 8px;
+            height: 8px;
+            background: #00ff7f;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(0,255,127,0.7);
+            flex-shrink: 0;
+        }
+
+        .chat-badge-text {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #00ff7f;
+        }
+
+        /* Stagger delays for screenshots */
+        .screenshot-frame:nth-child(1), .chat-card:nth-child(1) { transition-delay: 0.05s; }
+        .screenshot-frame:nth-child(2), .chat-card:nth-child(2) { transition-delay: 0.15s; }
+        .chat-card:nth-child(3) { transition-delay: 0.25s; }
+
+        /* ══════════════════════════════
+           CTA SECTION
+        ══════════════════════════════ */
+        .cta-section {
+            position: relative;
+            z-index: 1;
+            padding: 5rem 1.5rem 6rem;
+            text-align: center;
+        }
+
+        .cta-inner {
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, rgba(0,255,127,0.12) 0%, rgba(82,172,228,0.1) 100%);
+            border: 2px solid rgba(0,255,127,0.35);
+            border-radius: 32px;
+            padding: 4rem 3rem;
+            position: relative;
+            overflow: hidden;
+            animation: ctaGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes ctaGlow {
+            0%, 100% { box-shadow: 0 0 60px rgba(0,255,127,0.2), 0 20px 60px rgba(0,0,0,0.3); }
+            50% { box-shadow: 0 0 90px rgba(0,255,127,0.35), 0 25px 80px rgba(0,0,0,0.4); }
+        }
+
+        .cta-box::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 32px;
+            padding: 2px;
+            background: conic-gradient(from 0deg, #00ff7f, #52ace4, #ffd700, #00ff7f);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            animation: ctaBorderRotate 5s linear infinite;
+        }
+
+        @keyframes ctaBorderRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .cta-emoji {
+            font-size: 3.5rem;
+            display: block;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 0 30px rgba(0,255,127,0.6));
+            animation: ctaEmojiFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes ctaEmojiFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .cta-title {
+            font-family: 'Clash Display', sans-serif;
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00ff7f 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-sub {
+            font-size: 1.05rem;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: linear-gradient(135deg, #00ff7f 0%, #00e676 100%);
+            color: #000000;
+            font-family: 'Clash Display', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 800;
+            text-decoration: none;
+            padding: 1.1rem 2.75rem;
+            border-radius: 50px;
+            box-shadow: 0 8px 30px rgba(0,255,127,0.4);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            z-index: 2;
+            letter-spacing: 0.3px;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 14px 40px rgba(0,255,127,0.6);
+            background: linear-gradient(135deg, #33ff99 0%, #00ff7f 100%);
+        }
+
+        /* ══════════════════════════════
+           FOOTER
+        ══════════════════════════════ */
+        .footer {
+            position: relative;
+            z-index: 1;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            padding: 2rem 1.5rem;
+            text-align: center;
+        }
+
+        .footer-text {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.3);
+        }
+
+        /* ══════════════════════════════
+           MOBILE HAMBURGER
+        ══════════════════════════════ */
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 4px;
+            border: none;
+            background: none;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: #ffffff;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        /* ══════════════════════════════
+           RESPONSIVE
+        ══════════════════════════════ */
+        @media (max-width: 1024px) {
+            .video-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .testimonial-card:nth-child(3) {
+                grid-column: 1 / -1;
+                max-width: 500px;
+                margin: 0 auto;
+                width: 100%;
+            }
+
+            .stats-ticker-inner {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-toggle { display: flex; }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 64px;
+                left: 0;
+                right: 0;
+                background: rgba(6, 9, 16, 0.97);
+                border-bottom: 1px solid rgba(82,172,228,0.15);
+                flex-direction: column;
+                align-items: stretch;
+                padding: 1rem;
+                gap: 0.25rem;
+            }
+
+            .nav-links.open { display: flex; }
+
+            .nav-links a {
+                text-align: center;
+                padding: 0.75rem 1rem;
+                border-radius: 12px;
+            }
+
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonial-card:nth-child(3) {
+                grid-column: auto;
+                max-width: 100%;
+            }
+
+            .ad-results-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .chat-grid {
+                grid-template-columns: 1fr;
+                max-width: 380px;
+                margin: 0 auto;
+            }
+
+            .stats-ticker-inner {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .cta-box {
+                padding: 3rem 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero { padding: 3.5rem 1rem 3rem; }
+            .video-section { padding: 1.5rem 1rem 4rem; }
+            .screenshots-section { padding: 4rem 1rem; }
+            .cta-section { padding: 4rem 1rem 5rem; }
+
+            .stat-number { font-size: 2rem; }
+
+            .stats-ticker-inner {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.25rem;
+            }
+
+            .ticker-stat-num { font-size: 1.75rem; }
+
+            .cta-btn {
+                font-size: 1rem;
+                padding: 1rem 2.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ── NAV ── -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="https://leadstrom.co/unreleasedhome2" class="nav-logo">Leadstrom</a>
+
+            <button class="nav-toggle" aria-label="Toggle menu" onclick="toggleNav()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="https://leadstrom.co/unreleasedhome2#offer">The Offer</a></li>
+                <li><a href="https://leadstrom.co/unreleasedhome2#how">How We Do It</a></li>
+                <li><a href="https://leadstrom.co/unreleasedhome2#calculator">ROI Calculator</a></li>
+                <li><a href="https://leadstrom.co/unreleasedhome2#faqs">FAQs</a></li>
+                <li><a href="/reviews.html" style="color:#52ace4;">Reviews</a></li>
+                <li><a href="#book" class="nav-cta">Book a Call</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ── HERO ── -->
+    <section class="hero">
+        <div class="hero-eyebrow">
+            <div class="hero-eyebrow-dot"></div>
+            Real Clients. Real Numbers.
+        </div>
+        <h1 class="hero-title">
+            <span class="hero-title-white">Don't Take Our Word</span><br>
+            <span class="hero-title-gradient">For It.</span>
+        </h1>
+        <p class="hero-sub">Every result below is from an actual client — no stock photos, no made-up numbers.</p>
+    </section>
+
+    <!-- ── STATS TICKER ── -->
+    <div class="stats-ticker">
+        <div class="stats-ticker-inner">
+            <div>
+                <div class="ticker-stat-num">$955K+</div>
+                <div class="ticker-stat-label">Total Client Revenue</div>
+            </div>
+            <div>
+                <div class="ticker-stat-num">$8.29</div>
+                <div class="ticker-stat-label">Lowest Cost Per Estimate</div>
+            </div>
+            <div>
+                <div class="ticker-stat-num">48 Days</div>
+                <div class="ticker-stat-label">Fastest $450K Result</div>
+            </div>
+            <div>
+                <div class="ticker-stat-num">85%+</div>
+                <div class="ticker-stat-label">Appointment Show Rate</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── VIDEO TESTIMONIALS ── -->
+    <section class="video-section" id="video-testimonials">
+        <div class="video-section-inner">
+            <div class="section-label">
+                <div class="section-label-line"></div>
+                <div class="section-label-text">Video Testimonials</div>
+                <div class="section-label-line"></div>
+            </div>
+            <h2 class="video-section-title" style="margin-bottom:3rem;">Hear It From Them</h2>
+
+            <div class="video-grid">
+
+                <!-- Robin -->
+                <div class="testimonial-card">
+                    <div class="card-stats">
+                        <div class="stat-number">$385,000+</div>
+                        <div class="stat-label-main">In Sales</div>
+                        <div class="stat-timeframe">In just 3 months</div>
+                    </div>
+                    <div class="card-video">
+                        <div class="video-wrapper">
+                            <wistia-player media-id="n8ocf90sfl" aspect="0.5625"></wistia-player>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="card-client-name">Robin</div>
+                        <div class="card-client-desc">Home Services Contractor</div>
+                        <div class="card-cost-badge">✓ $9.58 cost per estimate</div>
+                    </div>
+                </div>
+
+                <!-- Sam -->
+                <div class="testimonial-card">
+                    <div class="card-stats">
+                        <div class="stat-number">$120,000</div>
+                        <div class="stat-label-main">In Sales</div>
+                        <div class="stat-timeframe">In just over 1 week</div>
+                    </div>
+                    <div class="card-video">
+                        <div class="video-wrapper">
+                            <wistia-player media-id="k2aacteb5v" aspect="0.5625"></wistia-player>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="card-client-name">Sam</div>
+                        <div class="card-client-desc">Facebook &amp; Instagram Campaigns</div>
+                        <div class="card-cost-badge">✓ $8.29 cost per estimate</div>
+                    </div>
+                </div>
+
+                <!-- Rick -->
+                <div class="testimonial-card">
+                    <div class="card-stats">
+                        <div class="stat-number">$450,000</div>
+                        <div class="stat-label-main">In Profit</div>
+                        <div class="stat-timeframe">Under 48 days</div>
+                    </div>
+                    <div class="card-video">
+                        <div class="video-wrapper">
+                            <wistia-player media-id="w9c7018d17" aspect="1.7777777777777777"></wistia-player>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="card-client-name">Rick</div>
+                        <div class="card-client-desc">High-Ticket Job Targeting</div>
+                        <div class="card-cost-badge">✓ Competitors were missing these jobs</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ── SCREENSHOT TESTIMONIALS ── -->
+    <section class="screenshots-section" id="screenshots">
+        <div class="screenshots-inner">
+            <div class="section-label">
+                <div class="section-label-line"></div>
+                <div class="section-label-text">Proof</div>
+                <div class="section-label-line"></div>
+            </div>
+            <h2 class="screenshots-title" style="margin-bottom:3.5rem;">The Numbers Don't Lie</h2>
+
+            <!-- Ad Campaign Results -->
+            <p class="subsection-label">📊 &nbsp;Ad Campaign Results</p>
+            <div class="ad-results-grid">
+                <div class="screenshot-frame">
+                    <img src="assets/ad-results-1.png" alt="Meta Ads campaign results — 5 campaigns, $14,146 total spend, 445 results" loading="lazy">
+                    <div class="screenshot-caption">
+                        <div class="screenshot-caption-title">445 Website Submit Results</div>
+                        <div class="screenshot-caption-sub">5 active campaigns · $14,146 total spend · $31.79 avg. cost per result</div>
+                    </div>
+                </div>
+                <div class="screenshot-frame">
+                    <img src="assets/ad-results-2.png" alt="Meta Ads campaign results — 4 campaigns, $9,707 total spend, 469 results" loading="lazy">
+                    <div class="screenshot-caption">
+                        <div class="screenshot-caption-title">469 Website Submit Results</div>
+                        <div class="screenshot-caption-sub">4 active campaigns · $9,707 total spend · $20.70 avg. cost per result</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Client Chat Screenshots -->
+            <p class="subsection-label" style="margin-top:1rem;">💬 &nbsp;Straight From Our Clients</p>
+            <div class="chat-grid">
+                <div class="chat-card">
+                    <img src="assets/chat-1.png" alt="Client text — booked appointments and kitchen consults" loading="lazy">
+                    <div class="chat-card-badge">
+                        <div class="chat-badge-dot"></div>
+                        <span class="chat-badge-text">Booked 2 kitchen consults + 1 appointment</span>
+                    </div>
+                </div>
+                <div class="chat-card">
+                    <img src="assets/chat-2.png" alt="Client Savi — closed the Martin deal, getting results" loading="lazy">
+                    <div class="chat-card-badge">
+                        <div class="chat-badge-dot"></div>
+                        <span class="chat-badge-text">"I closed the Martin dude earlier today"</span>
+                    </div>
+                </div>
+                <div class="chat-card">
+                    <img src="assets/chat-3.png" alt="Client — 2 leads this week, 1 job closed, both full renovations" loading="lazy">
+                    <div class="chat-card-badge">
+                        <div class="chat-badge-dot"></div>
+                        <span class="chat-badge-text">2 full renovation leads + 1 job closed</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── CTA ── -->
+    <section class="cta-section" id="book">
+        <div class="cta-inner">
+            <div class="cta-box">
+                <span class="cta-emoji">🚀</span>
+                <h2 class="cta-title">Ready to Be the Next Success Story?</h2>
+                <p class="cta-sub">We're invite-only and spots are limited. If you're a qualified home service business, let's talk.</p>
+                <a href="#" class="cta-btn">
+                    Book Your Call
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── FOOTER ── -->
+    <footer class="footer">
+        <p class="footer-text">© 2025 Leadstrom. All results shown are from actual clients. Individual results may vary.</p>
+    </footer>
+
+    <!-- ── SCRIPTS ── -->
+    <script>
+        /* Mobile nav toggle */
+        function toggleNav() {
+            document.getElementById('navLinks').classList.toggle('open');
+        }
+
+        /* Scroll reveal */
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll(
+            '.testimonial-card, .screenshot-frame, .chat-card'
+        ).forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
