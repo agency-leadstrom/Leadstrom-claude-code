@@ -1,0 +1,666 @@
+<!-- ============================================================
+     THANK YOU PAGE — GHL Custom Code block
+     Paste this entire block into a GHL Custom Code element.
+     ============================================================ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<script src="https://fast.wistia.com/player.js" async></script>
+<script src="https://fast.wistia.com/embed/6pw2jh48tn.js" async type="module"></script>
+<script src="https://fast.wistia.com/embed/9z3b7p2a6i.js" async type="module"></script>
+<script src="https://fast.wistia.com/embed/mjq3f9qfg3.js" async type="module"></script>
+
+<style>
+  .ty-wrap *, .ty-wrap *::before, .ty-wrap *::after { box-sizing:border-box; margin:0; padding:0; }
+
+  .ty-wrap {
+    background: #03091a;
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    width: 100vw;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    left: 50%;
+    margin-left: -50vw;
+  }
+
+  /* Subtle radial glow at top */
+  .ty-wrap::before {
+    content: '';
+    position: fixed;
+    top: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 600px;
+    background: radial-gradient(ellipse, rgba(82,172,228,0.08) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .ty-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ══ CONFIRMATION BADGE ══ */
+  .ty-top {
+    padding: 4rem 1.5rem 0;
+    text-align: center;
+  }
+
+  .ty-check-ring {
+    width: 80px;
+    height: 80px;
+    background: rgba(0,255,127,0.1);
+    border: 2px solid rgba(0,255,127,0.4);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.75rem;
+    animation: tyRingPulse 2.5s ease-in-out infinite;
+    box-shadow: 0 0 0 0 rgba(0,255,127,0.3);
+  }
+  @keyframes tyRingPulse {
+    0%,100% { box-shadow: 0 0 0 0 rgba(0,255,127,0.3), 0 0 30px rgba(0,255,127,0.15); }
+    50%      { box-shadow: 0 0 0 12px rgba(0,255,127,0), 0 0 50px rgba(0,255,127,0.25); }
+  }
+  .ty-check-ring svg { width:36px; height:36px; }
+
+  .ty-booked-label {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #00ff7f;
+    margin-bottom: 1rem;
+  }
+
+  .ty-headline {
+    font-family: 'Clash Display', sans-serif;
+    font-size: clamp(2.4rem, 5vw, 3.75rem);
+    font-weight: 900;
+    line-height: 1.08;
+    letter-spacing: -1.5px;
+    margin-bottom: 1.25rem;
+    color: #ffffff;
+  }
+
+  .ty-headline span {
+    background: linear-gradient(135deg, #52ace4 0%, #00ff7f 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .ty-sub {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.5);
+    max-width: 520px;
+    margin: 0 auto 3.5rem;
+    line-height: 1.7;
+  }
+
+  /* ══ MAIN VIDEO ══ */
+  .ty-video-wrap {
+    position: relative;
+    z-index: 1;
+    padding: 0 1.5rem 4rem;
+  }
+
+  .ty-video-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+  .ty-video-label-dot {
+    width: 8px; height: 8px;
+    background: #52ace4;
+    border-radius: 50%;
+    box-shadow: 0 0 12px rgba(82,172,228,0.8);
+    animation: tyDot 1.5s ease-in-out infinite;
+  }
+  @keyframes tyDot {
+    0%,100% { opacity:1; transform:scale(1); }
+    50%      { opacity:0.4; transform:scale(1.3); }
+  }
+  .ty-video-label-txt {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.4);
+  }
+
+  .ty-main-video-box {
+    background: rgba(10,18,40,0.8);
+    border: 1px solid rgba(82,172,228,0.2);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(82,172,228,0.08);
+  }
+
+  /* Thumb / click-to-play */
+  .ty-thumb {
+    position: relative;
+    cursor: pointer;
+    background: #000;
+    border-radius: 24px;
+    overflow: hidden;
+  }
+  .ty-thumb img { width:100%; height:auto; display:block; transition:transform 0.4s, opacity 0.4s; }
+  .ty-thumb:hover img { transform:scale(1.02); opacity:0.85; }
+
+  .ty-play-ov {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(0,0,0,0.25);
+    transition: background 0.3s;
+  }
+  .ty-thumb:hover .ty-play-ov { background: rgba(0,0,0,0.08); }
+
+  .ty-play-btn {
+    width: 80px; height: 80px;
+    background: rgba(255,255,255,0.96);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.4), 0 0 0 8px rgba(255,255,255,0.15);
+    transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s;
+  }
+  .ty-thumb:hover .ty-play-btn { transform:scale(1.1); box-shadow:0 14px 50px rgba(0,0,0,0.5),0 0 0 10px rgba(255,255,255,0.22); }
+  .ty-play-tri { width:0; height:0; border-style:solid; border-width:15px 0 15px 26px; border-color:transparent transparent transparent #000; margin-left:5px; }
+
+  .ty-player { display:none; border-radius:24px; overflow:hidden; background:#000; }
+
+  wistia-player[media-id='6pw2jh48tn']:not(:defined){background:center/contain no-repeat url('https://fast.wistia.com/embed/medias/6pw2jh48tn/swatch');display:block;filter:blur(5px);padding-top:56.25%;}
+  wistia-player[media-id='9z3b7p2a6i']:not(:defined){background:center/contain no-repeat url('https://fast.wistia.com/embed/medias/9z3b7p2a6i/swatch');display:block;filter:blur(5px);padding-top:56.25%;}
+  wistia-player[media-id='mjq3f9qfg3']:not(:defined){background:center/contain no-repeat url('https://fast.wistia.com/embed/medias/mjq3f9qfg3/swatch');display:block;filter:blur(5px);padding-top:56.25%;}
+
+  /* ══ WHAT HAPPENS NEXT ══ */
+  .ty-next-sec {
+    position: relative;
+    z-index: 1;
+    padding: 0 1.5rem 5rem;
+  }
+
+  .ty-sec-heading {
+    font-family: 'Clash Display', sans-serif;
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    font-weight: 800;
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.5px;
+  }
+
+  .ty-sec-sub {
+    text-align: center;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 3rem;
+  }
+
+  .ty-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .ty-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 20px;
+    padding: 1.75rem 2rem;
+    transition: border-color 0.3s, background 0.3s;
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  .ty-step.ty-on { opacity:1; transform:translateX(0); }
+  .ty-step:nth-child(1){transition: all 0.7s cubic-bezier(0.16,1,0.3,1) 0.05s;}
+  .ty-step:nth-child(2){transition: all 0.7s cubic-bezier(0.16,1,0.3,1) 0.15s;}
+  .ty-step:nth-child(3){transition: all 0.7s cubic-bezier(0.16,1,0.3,1) 0.25s;}
+  .ty-step:hover { border-color:rgba(82,172,228,0.25); background:rgba(82,172,228,0.04); }
+
+  .ty-step-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1.5rem;
+  }
+  .ty-step-icon.blue  { background: rgba(82,172,228,0.12); border: 1px solid rgba(82,172,228,0.25); }
+  .ty-step-icon.green { background: rgba(0,255,127,0.1);   border: 1px solid rgba(0,255,127,0.25); }
+  .ty-step-icon.gold  { background: rgba(255,193,7,0.1);   border: 1px solid rgba(255,193,7,0.25); }
+
+  .ty-step-body {}
+  .ty-step-title {
+    font-family: 'Clash Display', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.4rem;
+    letter-spacing: -0.2px;
+  }
+  .ty-step-desc {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.65;
+  }
+  .ty-step-desc strong { color: rgba(255,255,255,0.85); font-weight: 700; }
+
+  /* ══ PREP BOX ══ */
+  .ty-prep-sec {
+    position: relative;
+    z-index: 1;
+    padding: 0 1.5rem 5rem;
+  }
+
+  .ty-prep-box {
+    background: linear-gradient(135deg, rgba(255,193,7,0.08) 0%, rgba(255,152,0,0.05) 100%);
+    border: 2px solid rgba(255,193,7,0.3);
+    border-radius: 24px;
+    padding: 2.5rem 2.5rem;
+    position: relative;
+    overflow: hidden;
+    animation: tyPrepGlow 3s ease-in-out infinite;
+  }
+  @keyframes tyPrepGlow {
+    0%,100% { box-shadow: 0 0 40px rgba(255,193,7,0.08); }
+    50%      { box-shadow: 0 0 60px rgba(255,193,7,0.18); }
+  }
+
+  .ty-prep-box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,193,7,0.06), transparent);
+    animation: tySweep 4s ease-in-out infinite;
+  }
+  @keyframes tySweep {
+    0%   { left:-100%; }
+    50%, 100% { left:100%; }
+  }
+
+  .ty-prep-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.75rem;
+  }
+  .ty-prep-icon { font-size: 2rem; filter: drop-shadow(0 0 12px rgba(255,193,7,0.6)); }
+  .ty-prep-title {
+    font-family: 'Clash Display', sans-serif;
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #ffc107;
+    letter-spacing: -0.3px;
+  }
+
+  .ty-prep-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .ty-prep-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .ty-prep-check {
+    width: 24px; height: 24px;
+    background: rgba(255,193,7,0.15);
+    border: 1.5px solid rgba(255,193,7,0.5);
+    border-radius: 7px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: 0.8rem;
+    color: #ffc107;
+    font-weight: 900;
+  }
+  .ty-prep-txt {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.8);
+    font-weight: 500;
+    line-height: 1.5;
+  }
+  .ty-prep-txt strong { color: #ffffff; font-weight: 700; }
+
+  /* ══ OBJECTION VIDEOS ══ */
+  .ty-obj-sec {
+    position: relative;
+    z-index: 1;
+    padding: 0 1.5rem 6rem;
+  }
+
+  .ty-obj-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.75rem;
+  }
+
+  .ty-obj-card {
+    background: rgba(10,18,40,0.8);
+    border: 1px solid rgba(82,172,228,0.15);
+    border-radius: 22px;
+    overflow: hidden;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  .ty-obj-card.ty-on { opacity:1; transform:translateY(0); }
+  .ty-obj-card:nth-child(1){transition: all 0.7s cubic-bezier(0.16,1,0.3,1) 0.05s;}
+  .ty-obj-card:nth-child(2){transition: all 0.7s cubic-bezier(0.16,1,0.3,1) 0.18s;}
+  .ty-obj-card:hover { border-color:rgba(82,172,228,0.35); box-shadow:0 16px 50px rgba(0,0,0,0.4); }
+
+  .ty-obj-label {
+    padding: 1.25rem 1.5rem 0.75rem;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .ty-obj-q {
+    font-family: 'Clash Display', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.25rem;
+  }
+  .ty-obj-hint { font-size: 0.78rem; color: rgba(255,255,255,0.35); }
+
+  .ty-obj-video { padding: 1rem 1.25rem 1.25rem; }
+
+  .ty-thumb-sm {
+    position: relative;
+    cursor: pointer;
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .ty-thumb-sm img { width:100%; height:auto; display:block; transition:transform 0.4s, opacity 0.4s; }
+  .ty-thumb-sm:hover img { transform:scale(1.03); opacity:0.82; }
+
+  .ty-play-ov-sm {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(0,0,0,0.22);
+    transition: background 0.3s;
+  }
+  .ty-thumb-sm:hover .ty-play-ov-sm { background: rgba(0,0,0,0.06); }
+
+  .ty-play-btn-sm {
+    width: 56px; height: 56px;
+    background: rgba(255,255,255,0.95);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.4), 0 0 0 5px rgba(255,255,255,0.15);
+    transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s;
+  }
+  .ty-thumb-sm:hover .ty-play-btn-sm { transform:scale(1.12); }
+  .ty-play-tri-sm { width:0; height:0; border-style:solid; border-width:10px 0 10px 18px; border-color:transparent transparent transparent #000; margin-left:3px; }
+
+  .ty-player-sm { display:none; border-radius:12px; overflow:hidden; background:#000; }
+
+  /* ══ FOOTER ══ */
+  .ty-foot {
+    position: relative;
+    z-index: 1;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding: 2rem 1.5rem;
+    text-align: center;
+  }
+  .ty-foot p { font-size: 0.82rem; color: rgba(255,255,255,0.2); }
+
+  /* ══ DIVIDER ══ */
+  .ty-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  .ty-divider-line { flex:1; height:1px; background:rgba(255,255,255,0.07); }
+  .ty-divider-txt {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: rgba(255,255,255,0.25);
+    white-space: nowrap;
+  }
+
+  /* ══ RESPONSIVE ══ */
+  @media(max-width:640px){
+    .ty-obj-grid { grid-template-columns: 1fr; }
+    .ty-step { gap:1.25rem; padding:1.5rem 1.5rem; }
+    .ty-step-icon { width:44px; height:44px; font-size:1.25rem; }
+    .ty-prep-box { padding:2rem 1.5rem; }
+    .ty-headline { letter-spacing:-1px; }
+    .ty-play-btn { width:64px; height:64px; }
+    .ty-play-tri { border-width:12px 0 12px 20px; }
+    .ty-video-wrap, .ty-next-sec, .ty-prep-sec, .ty-obj-sec { padding-left:1rem; padding-right:1rem; }
+  }
+  @media(max-width:400px){
+    .ty-top { padding-top:3rem; }
+    .ty-step-title { font-size:1.05rem; }
+  }
+</style>
+
+<div class="ty-wrap">
+
+  <!-- ══ CONFIRMATION HEADER ══ -->
+  <div class="ty-top">
+    <div class="ty-inner">
+      <div class="ty-check-ring">
+        <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8 18.5L14.5 25.5L28 11" stroke="#00ff7f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="ty-booked-label">Appointment Confirmed</div>
+      <h1 class="ty-headline">You're Booked.<br><span>We'll Take It From Here.</span></h1>
+      <p class="ty-sub">Watch the video below — it covers exactly what happens next and how to make the most of your call.</p>
+    </div>
+  </div>
+
+  <!-- ══ MAIN VIDEO ══ -->
+  <div class="ty-video-wrap">
+    <div class="ty-inner">
+      <div class="ty-video-label">
+        <div class="ty-video-label-dot"></div>
+        <span class="ty-video-label-txt">Watch This First</span>
+        <div class="ty-video-label-dot"></div>
+      </div>
+      <div class="ty-main-video-box">
+        <div class="ty-thumb" onclick="tyPlay(this)">
+          <img src="https://assets.cdn.filesafe.space/MhJMjeYHKg4Lum0P4l0I/media/6a2196b3f607d4002b7b7420.png" alt="Thank you — watch this first">
+          <div class="ty-play-ov">
+            <div class="ty-play-btn"><div class="ty-play-tri"></div></div>
+          </div>
+        </div>
+        <div class="ty-player">
+          <wistia-player media-id="6pw2jh48tn" aspect="1.7777777777777777"></wistia-player>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ WHAT HAPPENS NEXT ══ -->
+  <section class="ty-next-sec">
+    <div class="ty-inner">
+      <div class="ty-divider">
+        <div class="ty-divider-line"></div>
+        <div class="ty-divider-txt">What Happens Next</div>
+        <div class="ty-divider-line"></div>
+      </div>
+      <h2 class="ty-sec-heading">Here's What to Expect</h2>
+      <p class="ty-sec-sub">Three things will happen between now and your call.</p>
+
+      <div class="ty-steps">
+
+        <div class="ty-step">
+          <div class="ty-step-icon blue">📞</div>
+          <div class="ty-step-body">
+            <div class="ty-step-title">We'll Call You to Confirm</div>
+            <div class="ty-step-desc">Expect a call from our team <strong>within 24 hours</strong> to confirm your appointment. Pick up — it takes less than 2 minutes and locks in your spot.</div>
+          </div>
+        </div>
+
+        <div class="ty-step">
+          <div class="ty-step-icon green">💬</div>
+          <div class="ty-step-body">
+            <div class="ty-step-title">You'll Receive SMS & Email Reminders</div>
+            <div class="ty-step-desc">We'll send you <strong>automatic reminders</strong> via both text and email before your call so you never miss it. Keep an eye on your inbox and phone.</div>
+          </div>
+        </div>
+
+        <div class="ty-step">
+          <div class="ty-step-icon gold">📅</div>
+          <div class="ty-step-body">
+            <div class="ty-step-title">Show Up & We Handle the Rest</div>
+            <div class="ty-step-desc">Join at your scheduled time. We'll walk you through everything — <strong>no pressure, no fluff</strong>. Just a straight conversation about how we can get you more jobs.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ PREP BOX ══ -->
+  <section class="ty-prep-sec">
+    <div class="ty-inner">
+      <div class="ty-prep-box">
+        <div class="ty-prep-header">
+          <div class="ty-prep-icon">⚡</div>
+          <div class="ty-prep-title">Before Your Call — Do This</div>
+        </div>
+        <div class="ty-prep-list">
+          <div class="ty-prep-item">
+            <div class="ty-prep-check">✓</div>
+            <div class="ty-prep-txt">Be in a <strong>quiet, distraction-free environment</strong> — not in your truck or on a job site</div>
+          </div>
+          <div class="ty-prep-item">
+            <div class="ty-prep-check">✓</div>
+            <div class="ty-prep-txt">Have your <strong>decision maker present</strong> — if someone else needs to approve, bring them on the call</div>
+          </div>
+          <div class="ty-prep-item">
+            <div class="ty-prep-check">✓</div>
+            <div class="ty-prep-txt">Know your <strong>average job ticket</strong> and how many jobs a month you're looking to add</div>
+          </div>
+          <div class="ty-prep-item">
+            <div class="ty-prep-check">✓</div>
+            <div class="ty-prep-txt">Block out <strong>30–45 minutes</strong> — don't schedule anything right after</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ OBJECTION VIDEOS ══ -->
+  <section class="ty-obj-sec">
+    <div class="ty-inner">
+      <div class="ty-divider">
+        <div class="ty-divider-line"></div>
+        <div class="ty-divider-txt">Common Questions</div>
+        <div class="ty-divider-line"></div>
+      </div>
+      <h2 class="ty-sec-heading" style="margin-bottom:0.75rem;">Got Questions? We've Got Answers.</h2>
+      <p class="ty-sec-sub" style="margin-bottom:2.5rem;">Watch these short videos before your call.</p>
+
+      <div class="ty-obj-grid">
+
+        <!-- Price -->
+        <div class="ty-obj-card">
+          <div class="ty-obj-label">
+            <div class="ty-obj-q">What's the price?</div>
+            <div class="ty-obj-hint">Answered in under 2 minutes</div>
+          </div>
+          <div class="ty-obj-video">
+            <div class="ty-thumb-sm" onclick="tyPlaySm(this)">
+              <img src="https://assets.cdn.filesafe.space/MhJMjeYHKg4Lum0P4l0I/media/6a219619b395bf07ac8f418e.png" alt="What's the price?">
+              <div class="ty-play-ov-sm">
+                <div class="ty-play-btn-sm"><div class="ty-play-tri-sm"></div></div>
+              </div>
+            </div>
+            <div class="ty-player-sm">
+              <wistia-player media-id="9z3b7p2a6i" aspect="1.7777777777777777"></wistia-player>
+            </div>
+          </div>
+        </div>
+
+        <!-- Results -->
+        <div class="ty-obj-card">
+          <div class="ty-obj-label">
+            <div class="ty-obj-q">How long does it take to see results?</div>
+            <div class="ty-obj-hint">Answered in under 2 minutes</div>
+          </div>
+          <div class="ty-obj-video">
+            <div class="ty-thumb-sm" onclick="tyPlaySm(this)">
+              <img src="https://assets.cdn.filesafe.space/MhJMjeYHKg4Lum0P4l0I/media/6a219662b395bf07ac8f4772.png" alt="How long does it take to see results?">
+              <div class="ty-play-ov-sm">
+                <div class="ty-play-btn-sm"><div class="ty-play-tri-sm"></div></div>
+              </div>
+            </div>
+            <div class="ty-player-sm">
+              <wistia-player media-id="mjq3f9qfg3" aspect="1.7777777777777777"></wistia-player>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══ -->
+  <footer class="ty-foot">
+    <p>© 2025 All results shown are from actual clients. Individual results may vary.</p>
+  </footer>
+
+</div>
+
+<script>
+  function tyPlay(thumb) {
+    var wrap = thumb.parentElement;
+    var player = wrap.querySelector('.ty-player');
+    thumb.style.display = 'none';
+    player.style.display = 'block';
+    var wp = player.querySelector('wistia-player');
+    if (wp) {
+      wp.addEventListener('ready', function(){ wp.play(); }, { once:true });
+      try { wp.play(); } catch(e) {}
+    }
+  }
+
+  function tyPlaySm(thumb) {
+    var wrap = thumb.parentElement;
+    var player = wrap.querySelector('.ty-player-sm');
+    thumb.style.display = 'none';
+    player.style.display = 'block';
+    var wp = player.querySelector('wistia-player');
+    if (wp) {
+      wp.addEventListener('ready', function(){ wp.play(); }, { once:true });
+      try { wp.play(); } catch(e) {}
+    }
+  }
+
+  var obs = new IntersectionObserver(function(e){
+    e.forEach(function(x){ if(x.isIntersecting) x.target.classList.add('ty-on'); });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.ty-step, .ty-obj-card').forEach(function(el){ obs.observe(el); });
+</script>
