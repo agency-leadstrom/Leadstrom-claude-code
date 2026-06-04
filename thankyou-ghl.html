@@ -13,6 +13,18 @@
 <script src="https://fast.wistia.com/embed/mjq3f9qfg3.js" async type="module"></script>
 
 <style>
+  /* Kill GHL's white container above */
+  body { background: #03091a !important; }
+  .container-fluid, .section-height-default,
+  [data-type="section"], [data-type="row"], [data-type="column"],
+  .hl-page-section, .hl_page-section--content,
+  .funnelish-section, .section-wrap,
+  .page-section, .cf-section {
+    background: transparent !important;
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+
   .ty-wrap *, .ty-wrap *::before, .ty-wrap *::after { box-sizing:border-box; margin:0; padding:0; }
 
   .ty-wrap {
